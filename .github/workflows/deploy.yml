@@ -26,9 +26,9 @@ jobs:
         run: npm run build
 
       - name: "Install ruby"
-          uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
       - name: "Install dpl"
         run: gem install dpl
 
