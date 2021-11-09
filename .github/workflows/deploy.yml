@@ -25,5 +25,8 @@ jobs:
       - name: "Build app"
         run: npm run build
 
+      - name: "Setup chromdriver"
+        run: sudo apt-get install chrome-driver
+
       - name: "Run tests"
         run: npm run test --no-watch --no-progress
