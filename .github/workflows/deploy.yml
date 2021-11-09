@@ -29,7 +29,7 @@ jobs:
         run: sudo apt-get install chromium-driver
 
       - name: "Run tests"
-        run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+        run: sudo npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
 
       - name: "Deploy to heroku"
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
