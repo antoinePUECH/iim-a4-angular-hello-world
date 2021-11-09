@@ -25,15 +25,15 @@ jobs:
       - name: "Build app"
         run: npm run build
 
-      - name: "Setup chromdriver"
-        run: sudo apt-get install chromium-driver
+      - name: "Install ruby"
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 2.7
+      - name: "Install dpl"
+        run: gem install dpl
 
-      - name: "Run tests"
-        run: sudo npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+      # - name: "Run tests"
+      #   run: sudo npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
 
       - name: "Deploy to heroku"
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "secrets.HEROKU_APP" #Must be unique in Heroku
-          heroku_email: "secrets.HEROKU_EMAIL"
+        uses: dpl --provider=heroku --app=${{secrets.HEROKU_APP}} --api-key=${{secrets.HEROKU_API_KEY}} --skip_cleanup=true
