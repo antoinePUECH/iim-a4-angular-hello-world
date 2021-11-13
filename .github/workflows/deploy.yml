@@ -32,8 +32,8 @@ jobs:
       - name: "Install dpl"
         run: gem install dpl
 
-      # - name: "Run tests"
-      #   run: sudo npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - name: "Run tests"
+        run: sudo npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
 
       - name: "Deploy to heroku"
         run: dpl --provider=heroku --app=${{secrets.HEROKU_APP}} --api-key=${{secrets.HEROKU_API_KEY}} --skip_cleanup=true
